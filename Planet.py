@@ -2,16 +2,18 @@
 Generates a random planet for my Starfinder Campaign
 '''
 
-from random import randint, uniform, choices, seed
+from random import randint, uniform, choices
+
 
 class Planet:
 
-    body_type = str()
-    planet_type = str()
-    moons = []
-    size = int()                # in Earths
+    body_type = str()   # body type (e.g. telluric, gas, moon)
+    planet_type = str() # planet type (e.g.)
+    moons = list()      # list of moons orbiting this planet
+    size = int()        # in Earths
 
-    def __init__(self, is_gas_giant=False, is_moon=False, size_lower_limit=0.66, size_upper_limit=1.38, min_moons=0, max_moons=2, overriding_moon_size=False):
+    def __init__(self, is_gas_giant=False, is_moon=False, size_lower_limit=0.66, size_upper_limit=1.38, min_moons=0,
+                 max_moons=2, overriding_moon_size=False):
         if is_gas_giant:
             self.body_type = "Gas Giant"
 
@@ -75,7 +77,7 @@ class Planet:
                 "Frozen": 15.5,
                 "Molten": 15.5,
                 "Toxic": 15.5,
-                "Habitable": 7
+                "Habitable": 4
             }
             habitable_type_weights = {
                 "Habitable Arid": 9.44,
@@ -121,11 +123,6 @@ class Planet:
 
     def __str__(self):
         return self.to_formatted_str()
-
-
-
-
-
 
 
 if __name__ == '__main__':
